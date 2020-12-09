@@ -22,12 +22,15 @@
     width: 90%;
     flex-wrap: wrap;
   }
+
   .logo {
     margin-top: 40px;
     width: 100%;
     text-align: center;
     color: #D8B278;
+    text-decoration: none;
   }
+
   .logo i {
     font-size: 2rem;
   }
@@ -58,6 +61,14 @@
     color: #333;
     font-weight: 600;
     font-size: 1.5rem;
+  }
+
+  .varukorg {
+  width: 100px;
+  }
+
+  .varukorg img {
+    width: 100%;
   }
 
   #products {

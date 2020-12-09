@@ -29,6 +29,8 @@ header {
   margin-top: 40px;
   width: 100%;
   text-align: center;
+  color: white;
+  text-decoration: none;
 }
 .logo i {
   font-size: 2rem;

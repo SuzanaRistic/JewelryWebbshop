@@ -38,7 +38,7 @@ class Product {
  let container = $('#products');
 
   $.each(products, (i, product) => {
-    let div = $('<div>').addClass('card').attr('id', product.id).appendTo(container);
+    let div = $('<div>').addClass('card').appendTo(container);
     var img = $('<img>'); 
     img.attr('src', product.img);
     img.appendTo(div);
@@ -46,8 +46,34 @@ class Product {
     let textContainer = $('<div>').addClass('text-container').appendTo(flexContainer)
     $('<h3>').html(product.name).appendTo(textContainer)
     $('<p>').html(product.price).appendTo(textContainer);
-    $('<button>').html('<i class="fas fa-shopping-basket"></i> ADD').appendTo(flexContainer)
+    $('<button>').addClass('addButton').attr('id', product.id).html('<i class="fas fa-shopping-basket"></i> ADD').appendTo(flexContainer)
   })
+
+    $('.addButton').click((item)=>{ 
+     let itemId = item.target.id;
+      $.each(products, (i, product) => {
+        if (itemId == product.id) {
+          shoppingCart.push(product);
+        }
+      })
+      createShoppingCart();
+      console.log(shoppingCart);
+     })
+
+     function createShoppingCart() {
+      $.each(shoppingCart, (i, product) => {
+      let varukorg = $('.varukorg')
+      let mainDiv = $('<div>').addClass('shopping-container').appendTo(varukorg)
+      let img = $('<img>');
+      img.attr('src', product.img);
+      img.appendTo(mainDiv);
+      let infoDiv = $('<div>').addClass('info-container').appendTo(mainDiv);
+      $('<h4>').html(product.name).appendTo(infoDiv);
+      $('<p>').html(product.price).appendTo(infoDiv);
+      $('<button>').addClass('removeButton').attr('id', product.id).html("REMOVE").appendTo(infoDiv);
+
+      })};
+
 
 
 
