@@ -26,14 +26,33 @@ class Product {
   }
 
   let products = [];
+  let shoppingCart = [];
 
-  let newProduct = new Product('earring', '../img/pearl.png', '299:-', 1);
-  let newProduct2 = new Product('watch', '../img/watch.png', '499:-', 2);
-  let newProduct3 = new Product('earring', '../img/diamond.png', '199:-', 3);
+  let p1 = new Product('earring', '../img/pearl.png', '299:-', 1);
+  let p2 = new Product('watch', '../img/watch.png', '499:-', 2);
+  let p3 = new Product('earring', '../img/diamond.png', '199:-', 3);
 
-  products.push(newProduct, newProduct2, newProduct3);
+  products.push(p1, p2, p3);
 
-  console.log(products);
+ console.log(products);
+ let container = $('#products');
+
+  $.each(products, (i, product) => {
+    let div = $('<div>').addClass('card').attr('id', product.id).appendTo(container);
+    var img = $('<img>'); 
+    img.attr('src', product.img);
+    img.appendTo(div);
+    let flexContainer = $('<div>').addClass('flex-container').appendTo(div)
+    let textContainer = $('<div>').addClass('text-container').appendTo(flexContainer)
+    $('<h3>').html(product.name).appendTo(textContainer)
+    $('<p>').html(product.price).appendTo(textContainer);
+    $('<button>').html('<i class="fas fa-shopping-basket"></i> ADD').appendTo(flexContainer)
+  })
+
+
+
+
+
   
   
 
