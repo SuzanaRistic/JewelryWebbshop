@@ -104,6 +104,7 @@ createShoppingCart();
         let savedValues = localStorage.getItem("shoppingcart");
         if (savedValues != null) {
             shoppingCart = JSON.parse(savedValues);
+            $('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')')
         }
     }
 
