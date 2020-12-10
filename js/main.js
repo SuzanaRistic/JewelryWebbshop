@@ -34,6 +34,13 @@ class Product {
 
   products.push(p1, p2, p3);
 
+//   let savedVaues = localStorage.getItem("shoppingcart");
+//   $('.varukorg').html(localStorage.getItem("shoppingcart"))
+checkLocalStorage();
+createShoppingCart();
+
+
+
  console.log(products);
  let container = $('#products');
 
@@ -49,6 +56,11 @@ class Product {
     $('<button>').addClass('addButton').attr('id', product.id).html('<i class="fas fa-shopping-basket"></i> ADD').appendTo(flexContainer)
   })
 
+//   TOGGLE SHOW CART
+    $('.shopping-btn').click(()=> {
+        $('.varukorg').toggle();
+    })
+
     $('.addButton').click((item)=>{ 
      let itemId = item.target.id;
       $.each(products, (i, product) => {
@@ -56,13 +68,15 @@ class Product {
           shoppingCart.push(product);
         }
       })
+      $('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')')
       createShoppingCart();
-      console.log(shoppingCart);
+      localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
      })
 
      function createShoppingCart() {
+      let varukorg = $('.varukorg');
+      varukorg.html('');
       $.each(shoppingCart, (i, product) => {
-      let varukorg = $('.varukorg')
       let mainDiv = $('<div>').addClass('shopping-container').appendTo(varukorg)
       let img = $('<img>');
       img.attr('src', product.img);
@@ -71,9 +85,29 @@ class Product {
       $('<h4>').html(product.name).appendTo(infoDiv);
       $('<p>').html(product.price).appendTo(infoDiv);
       $('<button>').addClass('removeButton').attr('id', product.id).html("REMOVE").appendTo(infoDiv);
+      })
 
-      })};
+      $('.removeButton').click((item)=>{ 
+      let itemId = item.target.id;
+       $.each(products, (i, product) => {
+         if (itemId == product.id) {
+           shoppingCart.splice(i, 1);
+         }
+       })
+       createShoppingCart();
+       $('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')')
+       localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
+      })
+    };
 
+    function checkLocalStorage() {
+        let savedValues = localStorage.getItem("shoppingcart");
+        if (savedValues != null) {
+            shoppingCart = JSON.parse(savedValues);
+        }
+    }
+
+      
 
 
 
