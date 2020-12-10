@@ -63,6 +63,27 @@ header nav ul li a {
   font-weight: 600;
   font-size: 1.5rem;
 }
+
+.varukorg {
+  background-color: white;
+  color: #333;
+  width: 200px;
+  position: absolute;
+  top: 15rem;
+  left: 2rem;
+  padding: 0 0;
+  }
+
+  .varukorg img {
+    width: 50%;
+  }
+
+  .shopping-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+  }
+
 .tom {
   flex-grow: 1;
   display: flex;
