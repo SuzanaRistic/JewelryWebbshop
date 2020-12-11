@@ -89,7 +89,7 @@ createShoppingCart();
 
       $('.removeButton').click((item)=>{ 
       let itemId = item.target.id;
-       $.each(products, (i, product) => {
+       $.each(shoppingCart, (i, product) => {
          if (itemId == product.id) {
            shoppingCart.splice(i, 1);
          }
