@@ -29,9 +29,9 @@ class Product {
   let products = [];
   let shoppingCart = [];
 
-  let p1 = new Product('earring', '../img/pearl.png', '299:-', 1);
-  let p2 = new Product('watch', '../img/watch.png', '499:-', 2);
-  let p3 = new Product('earring', '../img/diamond.png', '199:-', 3);
+  let p1 = new Product('earring', '../img/pearl.png', 299, 1);
+  let p2 = new Product('watch', '../img/watch.png', 499, 2);
+  let p3 = new Product('earring', '../img/diamond.png', 199, 3);
 
   products.push(p1, p2, p3);
 
@@ -73,8 +73,8 @@ function addCart(product){
     product.inCart = 1;
     shoppingCart.push(product);
   }
-  
-   $('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')');
+  calcPrice ();
+   calcProducts();
     localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
       createShoppingCart(product);
       console.log(product);
@@ -117,7 +117,7 @@ function addCart(product){
       $('<button>').addClass('removeButton').attr('id', product.id).html("REMOVE").appendTo(infoDiv)
       .on('click', {p:product}, function(e){removeItem(e.data.p)});
       })
-      
+      $('<span>').html("Price:" + calcPrice()).appendTo(varukorg).attr('id', "totalPrice");
     };
     function removeItem(product){
        for (let i = 0; i < shoppingCart.length; i++) {
@@ -127,7 +127,9 @@ function addCart(product){
      }
      product.inCart = 0;
      console.log(product);
-     $('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')');
+     calcPrice ();
+     calcProducts();
+
      localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
     createShoppingCart();
     }
@@ -136,21 +138,48 @@ function addCart(product){
         let savedValues = localStorage.getItem("shoppingcart");
         if (savedValues != null) {
             shoppingCart = JSON.parse(savedValues);
-            $('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')')
+            calcPrice ();
+            calcProducts();
         }
     }
     function increaseProduct(product){
       product.inCart++;
       console.log(product);
       createShoppingCart();
+      calcPrice ();
+      calcProducts();
     }
     function decreaseProduct(product){
       product.inCart--;
       console.log(product);
       createShoppingCart();
+      
       if(product.inCart == 0){
         removeItem(product);
       }
+      calcPrice ();
+      calcProducts();
+    }
+
+
+    function calcPrice (){
+      let totalPrice = 0;
+      for (let i = 0; i < shoppingCart.length; i++) {
+        totalPrice += shoppingCart[i].price * shoppingCart[i].inCart;
+      }
+
+    
+    return totalPrice;
+    }
+
+    function calcProducts (){
+      let totalProduct = 0;
+      for (let i = 0; i < shoppingCart.length; i++) {
+        totalProduct += shoppingCart[i].inCart;
+      }
+
+      $('#shopping-counter').html('Shoppingbag (' + totalProduct + ')');
+    return totalProduct;
     }
 
       
