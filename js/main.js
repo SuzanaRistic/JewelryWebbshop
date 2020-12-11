@@ -56,18 +56,29 @@ createShoppingCart();
     $('<p>').html(product.price).appendTo(textContainer);
 
     $('<button>').addClass('addButton').attr('id', product.id).html('<i class="fas fa-shopping-basket"></i> ADD').appendTo(flexContainer)
-    .on('click', {p:product}, function(e){
-      let product = e.data.p
-      shoppingCart.push(product);
-
-$('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')');
-      localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
-      createShoppingCart();
-        
-      
-    })
+    .on('click', {p:product}, function(e){addCart(e.data.p)})
   })
+  
+function addCart(product){
+  let x = 0;
 
+  for (let i = 0; i < shoppingCart.length; i++) {
+    if(product.id === shoppingCart[i].id){
+      product.inCart++;
+      x++;
+    }
+  }
+  if(x == 0){
+    
+    product.inCart = 1;
+    shoppingCart.push(product);
+  }
+  
+   $('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')');
+    localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
+      createShoppingCart(product);
+      console.log(product);
+}
 //   TOGGLE SHOW CART
     $('.shopping-btn').click(()=> {
         $('.varukorg').toggle();
@@ -96,36 +107,30 @@ $('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')');
       let infoDiv = $('<div>').addClass('info-container').appendTo(mainDiv);
       $('<h4>').html(product.name).appendTo(infoDiv);
       $('<p>').html(product.price).appendTo(infoDiv);
-      $('<button>').html("+").attr('id', "add").appendTo(infoDiv);
-      $('<input>').attr('type', "number").appendTo(infoDiv);
-      $('<button>').html("-").attr('id', "less").appendTo(infoDiv);
-      $('<button>').addClass('removeButton').attr('id', product.id).html("REMOVE").appendTo(infoDiv)
-      .on('click', {p:product}, function(e){
-        let productRemove = e.data.p;
-        console.log(e.data.p);
-        
-       for (let i = 0; i < shoppingCart.length; i++) {
-         if(productRemove.id == shoppingCart[i].id){
-          shoppingCart.splice(i, 1); 
-         }
-       }
-       $('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')');
-       localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
-        createShoppingCart();
+      $('<button>').html("+").attr('id', "add").appendTo(infoDiv).on('click', function(){
+        increaseProduct(product);
       });
+      $('<input>').attr('type', "number").appendTo(infoDiv).attr('value', product.inCart);
+      $('<button>').html("-").attr('id', "less").appendTo(infoDiv).on('click', function(){
+        decreaseProduct(product);
+      });
+      $('<button>').addClass('removeButton').attr('id', product.id).html("REMOVE").appendTo(infoDiv)
+      .on('click', {p:product}, function(e){removeItem(e.data.p)});
       })
-      // $('.removeButton').click((item)=>{ 
-      // let itemId = item.target.id;
-      //  $.each(shoppingCart, (i, product) => {
-      //    if (itemId == product.id) {
-      //      shoppingCart.splice(i, 1);
-      //    }
-      //  })
-      //  createShoppingCart();
-      //  $('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')')
-      //  localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
-      // })
+      
     };
+    function removeItem(product){
+       for (let i = 0; i < shoppingCart.length; i++) {
+       if(product.id == shoppingCart[i].id){
+        shoppingCart.splice(i, 1); 
+       }
+     }
+     product.inCart = 0;
+     console.log(product);
+     $('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')');
+     localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
+    createShoppingCart();
+    }
 
     function checkLocalStorage() {
         let savedValues = localStorage.getItem("shoppingcart");
@@ -133,6 +138,19 @@ $('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')');
             shoppingCart = JSON.parse(savedValues);
             $('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')')
         }
+    }
+    function increaseProduct(product){
+      product.inCart++;
+      console.log(product);
+      createShoppingCart();
+    }
+    function decreaseProduct(product){
+      product.inCart--;
+      console.log(product);
+      createShoppingCart();
+      if(product.inCart == 0){
+        removeItem(product);
+      }
     }
 
       
