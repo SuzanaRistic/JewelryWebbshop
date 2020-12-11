@@ -22,6 +22,7 @@ class Product {
       this.img = img;
       this.price = price;
       this.id = id;
+      this.inCart = 0;
     }
   }
 
@@ -56,11 +57,14 @@ createShoppingCart();
 
     $('<button>').addClass('addButton').attr('id', product.id).html('<i class="fas fa-shopping-basket"></i> ADD').appendTo(flexContainer)
     .on('click', {p:product}, function(e){
-      console.log(e.data.p);
-      shoppingCart.push(e.data.p); 
-      $('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')');
+      let product = e.data.p
+      shoppingCart.push(product);
+
+$('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')');
       localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
       createShoppingCart();
+        
+      
     })
   })
 
