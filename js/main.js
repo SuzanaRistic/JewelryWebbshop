@@ -53,7 +53,15 @@ createShoppingCart();
     let textContainer = $('<div>').addClass('text-container').appendTo(flexContainer)
     $('<h3>').html(product.name).appendTo(textContainer)
     $('<p>').html(product.price).appendTo(textContainer);
+
     $('<button>').addClass('addButton').attr('id', product.id).html('<i class="fas fa-shopping-basket"></i> ADD').appendTo(flexContainer)
+    .on('click', {p:product}, function(e){
+      console.log(e.data.p);
+      shoppingCart.push(e.data.p); 
+      $('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')');
+      localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
+      createShoppingCart();
+    })
   })
 
 //   TOGGLE SHOW CART
@@ -61,17 +69,17 @@ createShoppingCart();
         $('.varukorg').toggle();
     })
 
-    $('.addButton').click((item)=>{ 
-     let itemId = item.target.id;
-      $.each(products, (i, product) => {
-        if (itemId == product.id) {
-          shoppingCart.push(product);
-        }
-      })
-      $('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')')
-      createShoppingCart();
-      localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
-     })
+    //$('.addButton').click((item)=>{ 
+     //let itemId = item.target.id;
+      //$.each(products, (i, product) => {
+       //if (itemId == product.id) {
+        //  shoppingCart.push(product);
+       // }
+      //})
+      // $('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')')
+      // createShoppingCart();
+      // localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
+   
 
      function createShoppingCart() {
       let varukorg = $('.varukorg');
@@ -84,20 +92,35 @@ createShoppingCart();
       let infoDiv = $('<div>').addClass('info-container').appendTo(mainDiv);
       $('<h4>').html(product.name).appendTo(infoDiv);
       $('<p>').html(product.price).appendTo(infoDiv);
-      $('<button>').addClass('removeButton').attr('id', product.id).html("REMOVE").appendTo(infoDiv);
-      })
-
-      $('.removeButton').click((item)=>{ 
-      let itemId = item.target.id;
-       $.each(shoppingCart, (i, product) => {
-         if (itemId == product.id) {
-           shoppingCart.splice(i, 1);
+      $('<button>').html("+").attr('id', "add").appendTo(infoDiv);
+      $('<input>').attr('type', "number").appendTo(infoDiv);
+      $('<button>').html("-").attr('id', "less").appendTo(infoDiv);
+      $('<button>').addClass('removeButton').attr('id', product.id).html("REMOVE").appendTo(infoDiv)
+      .on('click', {p:product}, function(e){
+        let productRemove = e.data.p;
+        console.log(e.data.p);
+        
+       for (let i = 0; i < shoppingCart.length; i++) {
+         if(productRemove.id == shoppingCart[i].id){
+          shoppingCart.splice(i, 1); 
          }
-       })
-       createShoppingCart();
-       $('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')')
+       }
+       $('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')');
        localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
+        createShoppingCart();
+      });
       })
+      // $('.removeButton').click((item)=>{ 
+      // let itemId = item.target.id;
+      //  $.each(shoppingCart, (i, product) => {
+      //    if (itemId == product.id) {
+      //      shoppingCart.splice(i, 1);
+      //    }
+      //  })
+      //  createShoppingCart();
+      //  $('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')')
+      //  localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
+      // })
     };
 
     function checkLocalStorage() {
