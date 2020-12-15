@@ -72,6 +72,7 @@ header nav ul li a {
   top: 15rem;
   left: 2rem;
   padding: 0 0;
+  display: none;
   }
 
   .varukorg img {
