@@ -35,10 +35,12 @@
   .logo i {
     font-size: 2rem;
   }
-  
-  .shopping-btn i {
-    margin-right: 10px;
+
+  header {
+      display: flex;
+      justify-content: flex-end;
   }
+  
   header nav {
     width: 100%;
     display: none;
@@ -64,61 +66,56 @@
     font-size: 1.5rem;
   }
 
-  .varukorg {
-  background-color: white;
-  width: 200px;
-  position: absolute;
-  top: 15rem;
-  left: 2rem;
-  padding: 0 0;
-  display: none;
+  #check-out {
+      width: 80%;
   }
 
-
-  .shopping-container {
-      display: flex;
-      justify-content: space-between;
-      padding: 0.5rem 0;
-  }
-
-  .varukorg img {
-    width: 100%;
-  }
-
-  #products {
-      width: 90%;
-  }
-
-  .card {
-      padding: 1rem 0;
-  }
-
-  .card img {
+  #check-out img {
       width: 100%;
   }
 
-  .flex-container {
+  #form {
+      width: 80%;
+      padding-top: 2rem;
+  }
+
+  #form p {
+      width: 100%;
+  }
+
+  form{
       display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
       justify-content: space-between;
-      align-items: flex-end;
+      width: 100%;
   }
 
-  .card button {
-      background-color: #333;
-      color: white;
+  #form input {
+      width: 45%;
+      margin: 0.5rem 0;
+      height: 2rem;
       font-family: 'Montserrat', sans-serif;
-      height: 3rem;
-      width: 8rem;
       border: none;
-      box-shadow: none;
-      margin-bottom: 1rem;
+      border: 1px solid #ccc;
   }
 
-  .card h3 {
-      text-transform: uppercase;
-      font-size: 1.5rem;
-      font-weight: 400;
+  #card-info {
+      margin-top: 2rem;
   }
+
+  #form button {
+      width: 40%;
+      height: 3rem;
+      border: none;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #D8B278;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+  }
+  
 
   footer {
     height: 80px;
