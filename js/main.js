@@ -39,7 +39,8 @@ class Product {
 //   $('.varukorg').html(localStorage.getItem("shoppingcart"))
 checkLocalStorage();
 createShoppingCart();
-
+createCheckOut();
+checkEmptyCart()
 
 
  console.log(products);
@@ -69,6 +70,27 @@ function addCart(product){
     }
   }
   if(x == 0){
+    product.inCart = 1;
+    shoppingCart.push(product);
+  }
+
+  $('.varukorg').show();
+
+  calcPrice ();
+  calcProducts();
+    localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
+      createShoppingCart(product);
+      createCheckOut()
+      console.log(product);
+}
+
+  for (let i = 0; i < shoppingCart.length; i++) {
+    if(product.id === shoppingCart[i].id){
+      product.inCart++;
+      x++;
+    }
+  }
+  if(x == 0){
     
     product.inCart = 1;
     shoppingCart.push(product);
@@ -83,34 +105,23 @@ function addCart(product){
     $('.shopping-btn').click(()=> {
         $('.varukorg').toggle();
     })
-
-    //$('.addButton').click((item)=>{ 
-     //let itemId = item.target.id;
-      //$.each(products, (i, product) => {
-       //if (itemId == product.id) {
-        //  shoppingCart.push(product);
-       // }
-      //})
-      // $('#shopping-counter').html('Shoppingbag (' + shoppingCart.length + ')')
-      // createShoppingCart();
-      // localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
    
-
      function createShoppingCart() {
       let varukorg = $('.varukorg');
       varukorg.html('');
       $.each(shoppingCart, (i, product) => {
-      let mainDiv = $('<div>').addClass('shopping-container').appendTo(varukorg)
+      let mainDiv = $('<div>').addClass('shopping-container').appendTo(varukorg);
+      let imgContainer = $('<div>').addClass('img-container').appendTo(mainDiv);
       let img = $('<img>');
       img.attr('src', product.img);
-      img.appendTo(mainDiv);
+      img.appendTo(imgContainer);
       let infoDiv = $('<div>').addClass('info-container').appendTo(mainDiv);
       $('<h4>').html(product.name).appendTo(infoDiv);
       $('<p>').html(product.price).appendTo(infoDiv);
       $('<button>').html("+").attr('id', "add").appendTo(infoDiv).on('click', function(){
         increaseProduct(product);
       });
-      $('<input>').attr('type', "number").appendTo(infoDiv).attr('value', product.inCart);
+      $('<p>').attr('type', "number").appendTo(infoDiv).html(product.inCart);
       $('<button>').html("-").attr('id', "less").appendTo(infoDiv).on('click', function(){
         decreaseProduct(product);
       });
@@ -118,6 +129,17 @@ function addCart(product){
       .on('click', {p:product}, function(e){removeItem(e.data.p)});
       })
       $('<span>').html("Price:" + calcPrice()).appendTo(varukorg).attr('id', "totalPrice");
+      $('<button>').html("PAY").appendTo(varukorg).attr('id', 'cart-button')
+      .on('click', ()=> {
+        if(shoppingCart.length === 0) {
+          alert('Your shoppingcart is empty');
+        }
+        if(shoppingCart.length > 0) {
+          window.location.href="../html/checkout.html";
+        }
+      });
+      checkEmptyCart();
+
     };
     function removeItem(product){
        for (let i = 0; i < shoppingCart.length; i++) {
@@ -125,13 +147,15 @@ function addCart(product){
         shoppingCart.splice(i, 1); 
        }
      }
-     product.inCart = 0;
-     console.log(product);
-     calcPrice ();
-     calcProducts();
-
-     localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
+    $('.varukorg').hide();
+    product.inCart = 0;
+    console.log(product);
+    calcPrice ();
+    calcProducts();
+    localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
     createShoppingCart();
+    createCheckOut()
+
     }
 
     function checkLocalStorage() {
@@ -144,23 +168,27 @@ function addCart(product){
     }
     function increaseProduct(product){
       product.inCart++;
-      console.log(product);
       createShoppingCart();
+      createCheckOut()
       calcPrice ();
       calcProducts();
+      localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
+
     }
     function decreaseProduct(product){
       product.inCart--;
       console.log(product);
-      createShoppingCart();
-      
+    
       if(product.inCart == 0){
         removeItem(product);
       }
+
+      createShoppingCart();
+      createCheckOut()
       calcPrice ();
       calcProducts();
+      localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
     }
-
 
     function calcPrice (){
       let totalPrice = 0;
@@ -182,9 +210,56 @@ function addCart(product){
     return totalProduct;
     }
 
+    function createCheckOut() {
+      let checkoutContainer = $('#check-out');
+      checkoutContainer.html("");
+
+      $.each(shoppingCart, (i, product) => {
+        let mainDiv = $('<div>').addClass('shopping-container').appendTo(checkoutContainer);
+        let imgContainer = $('<div>').addClass('img-container').appendTo(mainDiv);
+        let img = $('<img>');
+        img.attr('src', product.img);
+        img.appendTo(imgContainer);
+        let infoDiv = $('<div>').addClass('info-container').appendTo(mainDiv);
+        $('<h4>').html(product.name).appendTo(infoDiv);
+        $('<p>').html(product.price).appendTo(infoDiv);
+        $('<button>').html("+").attr('id', "add").appendTo(infoDiv).on('click', function(){
+          increaseProduct(product);
+        });
+        $('<p>').attr('type', "number").appendTo(infoDiv).html(product.inCart);
+        $('<button>').html("-").attr('id', "less").appendTo(infoDiv).on('click', function(){
+          decreaseProduct(product);
+        });
+        $('<button>').addClass('removeButton').attr('id', product.id).html("REMOVE").appendTo(infoDiv)
+        .on('click', {p:product}, function(e){removeItem(e.data.p)});
+        })
+        $('<span>').html("Price:" + calcPrice()).appendTo(checkoutContainer).attr('id', "totalPrice");
+    }
+
+    $('#submit-button').on('click', (event)=> {
+      event.preventDefault();
+      let checkoutContainer = $('#check-out');
+      checkoutContainer.html("");
+      $('<h3>').html('Tack för ditt köp ' + $('#first-name').val()).appendTo(checkoutContainer);
+      $('<p>').html('Order number: ' + Math.floor(Math.random() * 100000) + 1).appendTo(checkoutContainer);
+      $('<p>').html('Shop more')
+      .appendTo(checkoutContainer)
+      .on('click', ()=> {
+        window.location.href= "../index.html";
+      })
+      $('#form').hide();
+      shoppingCart = [];
+      localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
+    })
+
+    function checkEmptyCart() {
+      if (shoppingCart.length === 0) {
+      $('#totalPrice').html('Varukorgen är tom');
+      $('#cart-button').hide();
+    }
+    }
+
       
-
-
 
 
 

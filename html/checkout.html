@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jewellery Shop</title>
-    <link rel="stylesheet" href="../css/products.css">
+    <link rel="stylesheet" href="../css/checkout.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@ crossorigin="anonymous"></script>
       <a class="logo" href="../index.html"><i class="far fa-gem"></i><h5>Jewellery<br>Shop</h5></a>
       </div>
       <header>
-        <div class="shopping-btn"><i class="fas fa-shopping-basket"></i><span id="shopping-counter">Shoppingbag (0)</span></div>
+        
        <div class="hamburg-btn"><i class="fas fa-bars"></i></div>
        <div class="cross-btn"><i class="fas fa-times"></i></div>
         <nav>
@@ -29,8 +29,35 @@ crossorigin="anonymous"></script>
           </ul>
         </nav>
       </header>
-      <div class="varukorg"></div>
-      <div id="products"></div>
+      
+      <div id="check-out"></div>
+      <div id="form">
+          <form>
+              <p>Fill:</p>
+              <input type="text" placeholder="First name" id="first-name">
+              <input type="text" placeholder="Last name">
+              <input type="text" placeholder="E-mail">
+              <input type="number" placeholder="Phone">
+              <input type="text" placeholder="Street">
+              <input type="number" placeholder="Streetnumber">
+              <input type="number" placeholder="ZIP">
+              <input type="text" placeholder="County">
+              <input type="text" placeholder="Country">
+              <input type="text" placeholder="C/O">
+          </form>
+
+          <form id="card-info">
+            <p>Please fill out your payment information</p>
+            <input type="text" placeholder="Card Holder Name">
+            <input type="number" placeholder="Card Number">
+            <input type="text" placeholder="DD/YY">
+            <input type="number" placeholder="CVC">
+
+            <button type="submit" id="submit-button">Submit</button>
+        </form>
+
+
+      </div>
       <footer><span>&copy; Design by Cornelia Lundell</span></footer>
 
 <script src="../js/main.js"></script>
