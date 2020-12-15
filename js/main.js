@@ -84,6 +84,23 @@ function addCart(product){
       console.log(product);
 }
 
+  for (let i = 0; i < shoppingCart.length; i++) {
+    if(product.id === shoppingCart[i].id){
+      product.inCart++;
+      x++;
+    }
+  }
+  if(x == 0){
+    
+    product.inCart = 1;
+    shoppingCart.push(product);
+  }
+  calcPrice ();
+   calcProducts();
+    localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
+      createShoppingCart(product);
+      console.log(product);
+}
 //   TOGGLE SHOW CART
     $('.shopping-btn').click(()=> {
         $('.varukorg').toggle();
@@ -122,6 +139,7 @@ function addCart(product){
         }
       });
       checkEmptyCart();
+
     };
     function removeItem(product){
        for (let i = 0; i < shoppingCart.length; i++) {
@@ -137,6 +155,7 @@ function addCart(product){
     localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
     createShoppingCart();
     createCheckOut()
+
     }
 
     function checkLocalStorage() {
@@ -154,6 +173,7 @@ function addCart(product){
       calcPrice ();
       calcProducts();
       localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
+
     }
     function decreaseProduct(product){
       product.inCart--;
