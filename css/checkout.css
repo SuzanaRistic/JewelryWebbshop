@@ -68,11 +68,76 @@
 
   #check-out {
       width: 80%;
+      margin-top: 2rem;
   }
 
   #check-out img {
       width: 100%;
   }
+    
+    .shopping-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+    }
+    
+    .img-container {
+      width: 60%;
+    }
+    
+    .info-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 0 10px;
+      width: 40%;
+      text-transform: uppercase;
+    }
+    
+    .input-div {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .input-div button {
+    background-color: inherit;
+    border: none;
+    font-size: large;
+    color: grey;
+    }
+    
+    .removeButton {
+    background-color: #D8B278;
+    color: white;
+    border: none;
+    font-family: 'Montserrat';
+    font-size: small;
+    font-weight: 500;
+    padding: 10px;
+    letter-spacing: 1px;
+    }
+    
+    #totalPrice {
+      font-size: x-large;
+      padding: 10px 0;
+      display: block;
+    }
+    
+    #cart-button {
+    background-color: #333;
+    margin-right: 10px ;
+    color: white;
+    border: none;
+    font-family: 'Montserrat';
+    font-size: large;
+    padding: 5px 30px;
+    letter-spacing: 2px;
+    float: right;
+    }
+    
+    .varukorg img {
+      width: 100%;
+    }
 
   #form {
       width: 80%;
@@ -118,9 +183,22 @@
   
 
   footer {
-    height: 80px;
+    height: 50px;
+    display: flex;
   }
-  footer span {
-    display: block;
-    padding: 2rem 0 0 0;
+  
+  footer i {
+    padding: 10px;
+    font-size: x-large;
+    cursor: pointer;
+  }
+
+  @media screen and (min-width: 800px) {
+    #check-out {
+      width: 50%;
+    }
+
+    #form {
+      width: 60%;
+    }
   }

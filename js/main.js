@@ -54,7 +54,7 @@ checkEmptyCart()
     let flexContainer = $('<div>').addClass('flex-container').appendTo(div)
     let textContainer = $('<div>').addClass('text-container').appendTo(flexContainer)
     $('<h3>').html(product.name).appendTo(textContainer)
-    $('<p>').html(product.price).appendTo(textContainer);
+    $('<p>').html(product.price + ":-").appendTo(textContainer);
 
     $('<button>').addClass('addButton').attr('id', product.id).html('<i class="fas fa-shopping-basket"></i> ADD').appendTo(flexContainer)
     .on('click', {p:product}, function(e){addCart(e.data.p)})
@@ -100,18 +100,19 @@ function addCart(product){
       img.appendTo(imgContainer);
       let infoDiv = $('<div>').addClass('info-container').appendTo(mainDiv);
       $('<h4>').html(product.name).appendTo(infoDiv);
-      $('<p>').html(product.price).appendTo(infoDiv);
-      $('<button>').html("+").attr('id', "add").appendTo(infoDiv).on('click', function(){
+      $('<p>').html(product.price + ":-").appendTo(infoDiv);
+      let inputDiv = $('<div>').addClass('input-div').appendTo(infoDiv);
+      $('<button>').addClass("fas fa-plus").attr('id', "add").appendTo(inputDiv).on('click', function(){
         increaseProduct(product);
       });
-      $('<p>').attr('type', "number").appendTo(infoDiv).html(product.inCart);
-      $('<button>').html("-").attr('id', "less").appendTo(infoDiv).on('click', function(){
+      $('<p>').attr('type', "number").appendTo(inputDiv).html(product.inCart);
+      $('<button>').addClass("fas fa-minus").attr('id', "less").appendTo(inputDiv).on('click', function(){
         decreaseProduct(product);
       });
       $('<button>').addClass('removeButton').attr('id', product.id).html("REMOVE").appendTo(infoDiv)
       .on('click', {p:product}, function(e){removeItem(e.data.p)});
       })
-      $('<span>').html("Price:" + calcPrice()).appendTo(varukorg).attr('id', "totalPrice");
+      $('<span>').html("Price: " + calcPrice() + ":-").appendTo(varukorg).attr('id', "totalPrice");
       $('<button>').html("PAY").appendTo(varukorg).attr('id', 'cart-button')
       .on('click', ()=> {
         if(shoppingCart.length === 0) {
@@ -202,18 +203,19 @@ function addCart(product){
         img.appendTo(imgContainer);
         let infoDiv = $('<div>').addClass('info-container').appendTo(mainDiv);
         $('<h4>').html(product.name).appendTo(infoDiv);
-        $('<p>').html(product.price).appendTo(infoDiv);
-        $('<button>').html("+").attr('id', "add").appendTo(infoDiv).on('click', function(){
+        $('<p>').html(product.price + ":-").appendTo(infoDiv);
+        let inputDiv = $('<div>').addClass('input-div').appendTo(infoDiv);
+        $('<button>').addClass("fas fa-plus").attr('id', "add").appendTo(inputDiv).on('click', function(){
           increaseProduct(product);
         });
-        $('<p>').attr('type', "number").appendTo(infoDiv).html(product.inCart);
-        $('<button>').html("-").attr('id', "less").appendTo(infoDiv).on('click', function(){
+        $('<p>').appendTo(inputDiv).html(product.inCart);
+        $('<button>').addClass("fas fa-minus").attr('id', "less").appendTo(inputDiv).on('click', function(){
           decreaseProduct(product);
         });
         $('<button>').addClass('removeButton').attr('id', product.id).html("REMOVE").appendTo(infoDiv)
         .on('click', {p:product}, function(e){removeItem(e.data.p)});
         })
-        $('<span>').html("Price:" + calcPrice()).appendTo(checkoutContainer).attr('id', "totalPrice");
+        $('<span>').html("Price: " + calcPrice() + ":-").appendTo(checkoutContainer).attr('id', "totalPrice");
     }
 
     $('#submit-button').on('click', (event)=> {
@@ -236,19 +238,5 @@ function addCart(product){
       if (shoppingCart.length === 0) {
       $('#totalPrice').html('Varukorgen är tom');
       $('#cart-button').hide();
-    }
-    }
-
-      
-
-
-
-
-
-  
-  
-
-
-
-
+    }}
 
