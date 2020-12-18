@@ -239,3 +239,4 @@ function addCart(product){
       $('#totalPrice').html('Varukorgen är tom');
       $('#cart-button').hide();
     }}
+
