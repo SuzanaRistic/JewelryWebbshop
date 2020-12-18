@@ -238,14 +238,4 @@ function addCart(product){
       if (shoppingCart.length === 0) {
       $('#totalPrice').html('Varukorgen är tom');
       $('#cart-button').hide();
-    }
-}
-
-
-
-  
-  
-
-
-
-
+    }}
