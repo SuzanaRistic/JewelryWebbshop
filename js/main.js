@@ -29,11 +29,14 @@ class Product {
   let products = [];
   let shoppingCart = [];
 
-  let p1 = new Product('earring', '../img/pearl.png', 299, 1);
-  let p2 = new Product('watch', '../img/watch.png', 499, 2);
-  let p3 = new Product('earring', '../img/diamond.png', 199, 3);
+  let p1 = new Product('pearl earrings', '../img/pearl.png', 299, 1);
+  let p2 = new Product('rose watch', '../img/watch.png', 699, 2);
+  let p3 = new Product('drop earrings', '../img/diamond.png', 499, 3);
+  let p4 = new Product('flower ring', '../img/ring.png', 1299, 4);
+  let p5 = new Product('suave necklace', '../img/necklace.png', 399, 5);
+  let p6 = new Product('bracelet trio', '../img/bracelet.png', 799, 6);
 
-  products.push(p1, p2, p3);
+  products.push(p1, p2, p3, p4, p5, p6);
 
 //   let savedVaues = localStorage.getItem("shoppingcart");
 //   $('.varukorg').html(localStorage.getItem("shoppingcart"))
@@ -187,7 +190,7 @@ function addCart(product){
         totalProduct += shoppingCart[i].inCart;
       }
 
-      $('#shopping-counter').html('Shoppingbag (' + totalProduct + ')');
+      $('#shopping-counter').html('Shopping Bag (' + totalProduct + ')');
     return totalProduct;
     }
 
