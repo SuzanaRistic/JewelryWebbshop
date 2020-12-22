@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
 }
-/*@media only screen and (min-width: 450px) {*/
+
 body {
   font-family: "Montserrat", sans-serif;
   margin: 0;
@@ -24,6 +24,10 @@ header {
   align-items: center;
   width: 90%;
   flex-wrap: wrap;
+}
+
+button {
+  cursor: pointer;
 }
 
 .logo {
@@ -157,9 +161,10 @@ float: right;
 }
 
 .flex-container {
+  padding-top: 1rem;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: flex-start;
 }
 
 .card button {

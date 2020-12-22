@@ -279,15 +279,19 @@ $("#submit-button").on("click", (event) => {
   event.preventDefault();
   let checkoutContainer = $("#check-out");
   checkoutContainer.html("");
+  let confirmContainer = $('<div>').addClass('confirm-container').appendTo(checkoutContainer)
+  $("<h2>").addClass("fas fa-check-circle").appendTo(confirmContainer);
   $("<h3>")
     .html("Tack för ditt köp " + $("#first-name").val())
-    .appendTo(checkoutContainer);
+    .appendTo(confirmContainer)
+    .addClass("thank-you");
   $("<p>")
     .html("Order number: " + Math.floor(Math.random() * 100000) + 1)
-    .appendTo(checkoutContainer);
+    .appendTo(confirmContainer)
+    .addClass("confirmation");
   $("<p>")
     .html("Shop more")
-    .appendTo(checkoutContainer)
+    .appendTo(confirmContainer)
     .on("click", () => {
       window.location.href = "../index.html";
     });
