@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
 }
-/*@media only screen and (min-width: 450px) {*/
+
 body {
   font-family: "Montserrat", sans-serif;
   margin: 0;
@@ -24,6 +24,10 @@ header {
   align-items: center;
   width: 90%;
   flex-wrap: wrap;
+}
+
+button {
+  cursor: pointer;
 }
 .logo {
   margin-top: 40px;
@@ -182,7 +186,7 @@ footer i {
   font-size: x-large;
   cursor: pointer;
 }
-/*}*/
+
 @media screen and (min-width: 800px) {
   
   .tom {

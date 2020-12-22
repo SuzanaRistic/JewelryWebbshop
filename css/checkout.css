@@ -1,204 +1,234 @@
 * {
-    box-sizing: border-box;
-  }
-  /*@media only screen and (min-width: 450px) {*/
-  body {
-    font-family: "Montserrat", sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f7f7f7;
-    height: 100vh;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    letter-spacing: 1px;
-    position: relative;
-  }
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%;
-    flex-wrap: wrap;
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  .logo {
-    margin-top: 40px;
-    width: 100%;
-    text-align: center;
-    color: #D8B278;
-    text-decoration: none;
-  }
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+  height: 100vh;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  letter-spacing: 1px;
+  position: relative;
+}
+button {
+  cursor: pointer;
+}
 
-  .logo i {
-    font-size: 2rem;
-  }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  flex-wrap: wrap;
+}
 
-  header {
-      display: flex;
-      justify-content: flex-end;
-  }
-  
-  header nav {
-    width: 100%;
-    display: none;
-  }
-  
-  .hamburg-btn, .cross-btn {
-    cursor: pointer;
-    font-size: 2rem;
-  }
-  header nav ul {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
-  header nav ul li {
-    list-style: none;
-    padding: 1rem 0.5rem;
-  }
-  header nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 600;
-    font-size: 1.5rem;
-  }
+button {
+  cursor: pointer;
+}
 
+.logo {
+  margin-top: 40px;
+  width: 100%;
+  text-align: center;
+  color: #D8B278;
+  text-decoration: none;
+}
+
+.logo i {
+  font-size: 2rem;
+  padding-bottom: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+header nav {
+  width: 100%;
+  display: none;
+}
+
+.hamburg-btn,
+.cross-btn {
+  cursor: pointer;
+  font-size: 2rem;
+}
+header nav ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+header nav ul li {
+  list-style: none;
+  padding: 1rem 0.5rem;
+}
+header nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+#check-out {
+  width: 80%;
+  margin-top: 2rem;
+}
+
+#check-out img {
+  width: 100%;
+}
+
+.shopping-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.img-container {
+  width: 60%;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 0 10px;
+  width: 40%;
+  text-transform: uppercase;
+}
+
+.input-div {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.input-div button {
+  background-color: inherit;
+  border: none;
+  font-size: large;
+  color: grey;
+}
+
+.removeButton {
+  background-color: #d8b278;
+  color: white;
+  border: none;
+  font-family: "Montserrat";
+  font-size: small;
+  font-weight: 500;
+  padding: 10px;
+  letter-spacing: 1px;
+  width: 50%;
+}
+
+#totalPrice {
+  font-size: x-large;
+  padding: 10px 0;
+  display: block;
+}
+
+#cart-button {
+  background-color: #333;
+  margin-right: 10px;
+  color: white;
+  border: none;
+  font-family: "Montserrat";
+  font-size: large;
+  padding: 5px 30px;
+  letter-spacing: 2px;
+  float: right;
+}
+
+.varukorg img {
+  width: 100%;
+}
+
+#form {
+  width: 80%;
+  padding-top: 2rem;
+}
+
+#form p {
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#form input {
+  width: 45%;
+  margin: 0.5rem 0;
+  height: 2rem;
+  font-family: "Montserrat", sans-serif;
+  border: none;
+  border: 1px solid #ccc;
+}
+
+#card-info {
+  margin-top: 2rem;
+}
+
+#form button {
+  width: 40%;
+  height: 3rem;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  background-color: #d8b278;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+#check-out h2 {
+  font-size: 10rem;
+  color: #00b894;
+}
+
+.confirm-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.thank-you,
+.confirmation {
+  padding: 2rem 0;
+}
+
+footer {
+  height: 50px;
+  display: flex;
+}
+
+footer i {
+  padding: 10px;
+  font-size: x-large;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 800px) {
   #check-out {
-      width: 80%;
-      margin-top: 2rem;
+    width: 50%;
   }
-
-  #check-out img {
-      width: 100%;
-  }
-    
-    .shopping-container {
-        display: flex;
-        justify-content: space-between;
-        padding: 0.5rem 0;
-    }
-    
-    .img-container {
-      width: 60%;
-    }
-    
-    .info-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      margin: 0 10px;
-      width: 40%;
-      text-transform: uppercase;
-    }
-    
-    .input-div {
-      display: flex;
-      justify-content: space-between;
-    }
-    
-    .input-div button {
-    background-color: inherit;
-    border: none;
-    font-size: large;
-    color: grey;
-    }
-    
-    .removeButton {
-    background-color: #D8B278;
-    color: white;
-    border: none;
-    font-family: 'Montserrat';
-    font-size: small;
-    font-weight: 500;
-    padding: 10px;
-    letter-spacing: 1px;
-    }
-    
-    #totalPrice {
-      font-size: x-large;
-      padding: 10px 0;
-      display: block;
-    }
-    
-    #cart-button {
-    background-color: #333;
-    margin-right: 10px ;
-    color: white;
-    border: none;
-    font-family: 'Montserrat';
-    font-size: large;
-    padding: 5px 30px;
-    letter-spacing: 2px;
-    float: right;
-    }
-    
-    .varukorg img {
-      width: 100%;
-    }
 
   #form {
-      width: 80%;
-      padding-top: 2rem;
+    width: 60%;
   }
-
-  #form p {
-      width: 100%;
-  }
-
-  form{
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      width: 100%;
-  }
-
-  #form input {
-      width: 45%;
-      margin: 0.5rem 0;
-      height: 2rem;
-      font-family: 'Montserrat', sans-serif;
-      border: none;
-      border: 1px solid #ccc;
-  }
-
-  #card-info {
-      margin-top: 2rem;
-  }
-
-  #form button {
-      width: 40%;
-      height: 3rem;
-      border: none;
-      font-family: 'Montserrat', sans-serif;
-      background-color: #D8B278;
-      color: white;
-      font-size: 1.2rem;
-      font-weight: 700;
-      text-transform: uppercase;
-  }
-  
-
-  footer {
-    height: 50px;
-    display: flex;
-  }
-  
-  footer i {
-    padding: 10px;
-    font-size: x-large;
-    cursor: pointer;
-  }
-
-  @media screen and (min-width: 800px) {
-    #check-out {
-      width: 50%;
-    }
-
-    #form {
-      width: 60%;
-    }
-  }
+}
