@@ -63,29 +63,28 @@ checkEmptyCart()
     .on('click', {p:product}, function(e){addCart(e.data.p)})
   })
   
-function addCart(product){
-  let x = 0;
-
-  for (let i = 0; i < shoppingCart.length; i++) {
-    if(product.id === shoppingCart[i].id){
-      product.inCart++;
-      x++;
+  function addCart(product) {
+    let isProductInCart = 0;
+  
+    for (let i = 0; i < shoppingCart.length; i++) {
+      if (product.id === shoppingCart[i].id) {
+        shoppingCart[i].inCart++;
+        isProductInCart++;
+      }
     }
-  }
-  if(x == 0){
-    product.inCart = 1;
-    shoppingCart.push(product);
-  }
-
-  $('.varukorg').show();
-
-  calcPrice ();
-  calcProducts();
+    if (isProductInCart == 0) {
+      product.inCart++;
+      shoppingCart.push(product);
+    }
+  
+    $(".varukorg").show();
+  
     localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
-      createShoppingCart(product);
-      createCheckOut()
-      console.log(product);
-}
+    createShoppingCart(product);
+    createCheckOut();
+    calcPrice();
+    calcProducts();
+  }
 
 //   TOGGLE SHOW CART
     $('.shopping-btn').click(()=> {
@@ -127,20 +126,24 @@ function addCart(product){
       });
       checkEmptyCart();
     };
-    function removeItem(product){
-       for (let i = 0; i < shoppingCart.length; i++) {
-       if(product.id == shoppingCart[i].id){
-        shoppingCart.splice(i, 1); 
-       }
-     }
-    $('.varukorg').hide();
-    product.inCart = 0;
-    console.log(product);
-    calcPrice ();
-    calcProducts();
-    localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
-    createShoppingCart();
-    createCheckOut()
+    function removeItem(product) {
+      for (let i = 0; i < shoppingCart.length; i++) {
+        if (product.id == shoppingCart[i].id) {
+          shoppingCart.splice(i, 1);
+        }
+      }
+    
+      if (shoppingCart.length == 0) {
+        $(".varukorg").hide();
+      }
+    
+      product.inCart = 0;
+      console.log(product);
+      calcPrice();
+      calcProducts();
+      localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
+      createShoppingCart();
+      createCheckOut();
     }
 
     function checkLocalStorage() {
