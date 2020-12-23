@@ -4,12 +4,17 @@ body {
   color: #333;
 }
 
+
 .logo {
   margin-top: 40px;
   width: 100%;
   text-align: center;
   color: #D8B278;
   text-decoration: none;
+}
+
+header nav ul li a {
+  color: #333;
 }
 
 .shopping-bag img {
@@ -67,4 +72,13 @@ body {
    align-items: flex-start;
    margin-top: 20px;
   }
+
+  #products button:hover {
+    background-color: #ccc;
+    transition: 0.2s ease;
+    -webkit-transition: 0.2s ease;
+    -moz-transition: 0.2s ease;
+    -ms-transition: 0.2s ease;
+    -o-transition: 0.2s ease;
+}
  }

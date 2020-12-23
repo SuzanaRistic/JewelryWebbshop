@@ -12,6 +12,10 @@ header {
     justify-content: flex-end;
 }
 
+header nav ul li a {
+  color: #333;
+}
+
 #check-out {
   width: 80%;
   margin-top: 2rem;
