@@ -4,12 +4,11 @@ body {
   color: #333;
 }
 
-
 .logo {
   margin-top: 40px;
   width: 100%;
   text-align: center;
-  color: #D8B278;
+  color: #d8b278;
   text-decoration: none;
 }
 
@@ -22,39 +21,39 @@ header nav ul li a {
 }
 
 #products {
-    width: 90%;
+  width: 90%;
 }
 
 .card {
-    padding: 1rem 0;
+  padding: 1rem 0;
 }
 
 .card img {
-    width: 100%;
+  width: 100%;
 }
 
 .flex-container {
   padding-top: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .card button {
-    background-color: #333;
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-    height: 3rem;
-    width: 8rem;
-    border: none;
-    box-shadow: none;
-    margin-bottom: 1rem;
+  background-color: #333;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  height: 3rem;
+  width: 8rem;
+  border: none;
+  box-shadow: none;
+  margin-bottom: 1rem;
 }
 
 .card h3 {
-    text-transform: uppercase;
-    font-size: 1.5rem;
-    font-weight: 400;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 400;
 }
 
 @media screen and (min-width: 800px) {
@@ -63,14 +62,14 @@ header nav ul li a {
     justify-content: space-between;
     flex-wrap: wrap;
   }
- 
+
   .card {
-   width: 30%;
+    width: 30%;
   }
- 
+
   .flex-container {
-   align-items: flex-start;
-   margin-top: 20px;
+    align-items: flex-start;
+    margin-top: 20px;
   }
 
   #products button:hover {
@@ -80,5 +79,5 @@ header nav ul li a {
     -moz-transition: 0.2s ease;
     -ms-transition: 0.2s ease;
     -o-transition: 0.2s ease;
+  }
 }
- }

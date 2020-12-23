@@ -5,11 +5,11 @@ body {
 }
 
 .logo {
-  color: #D8B278;
+  color: #d8b278;
 }
 
 header {
-    justify-content: flex-end;
+  justify-content: flex-end;
 }
 
 header nav ul li a {
@@ -152,11 +152,11 @@ form {
 }
 
 .confirm-container button {
-  background-color: #D8B278;
+  background-color: #d8b278;
   border: none;
   width: 8rem;
   height: 2rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: white;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -174,5 +174,5 @@ form {
 
   button:hover {
     background-color: #ccc;
-}
+  }
 }
