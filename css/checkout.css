@@ -1,81 +1,15 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
-  font-family: "Montserrat", sans-serif;
-  margin: 0;
-  padding: 0;
+  background-image: none;
   background-color: #f7f7f7;
-  height: 100vh;
   color: #333;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  letter-spacing: 1px;
-  position: relative;
-}
-button {
-  cursor: pointer;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 90%;
-  flex-wrap: wrap;
-}
-
-button {
-  cursor: pointer;
 }
 
 .logo {
-  margin-top: 40px;
-  width: 100%;
-  text-align: center;
   color: #D8B278;
-  text-decoration: none;
-}
-
-.logo i {
-  font-size: 2rem;
-  padding-bottom: 20px;
 }
 
 header {
-  display: flex;
-  justify-content: flex-end;
-}
-
-header nav {
-  width: 100%;
-  display: none;
-}
-
-.hamburg-btn,
-.cross-btn {
-  cursor: pointer;
-  font-size: 2rem;
-}
-header nav ul {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-header nav ul li {
-  list-style: none;
-  padding: 1rem 0.5rem;
-}
-header nav ul li a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 600;
-  font-size: 1.5rem;
+    justify-content: flex-end;
 }
 
 #check-out {
@@ -161,6 +95,7 @@ header nav ul li a {
 
 #form p {
   width: 100%;
+  padding-top: 2rem;
 }
 
 form {
@@ -212,15 +147,16 @@ form {
   padding: 2rem 0;
 }
 
-footer {
-  height: 50px;
-  display: flex;
-}
-
-footer i {
-  padding: 10px;
-  font-size: x-large;
-  cursor: pointer;
+.confirm-container button {
+  background-color: #D8B278;
+  border: none;
+  width: 8rem;
+  height: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
 }
 
 @media screen and (min-width: 800px) {
@@ -231,4 +167,8 @@ footer i {
   #form {
     width: 60%;
   }
+
+  button:hover {
+    background-color: #ccc;
+}
 }

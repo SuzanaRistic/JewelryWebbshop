@@ -38,14 +38,11 @@ let p6 = new Product("bracelet trio", "../img/bracelet.png", 799, 6);
 
 products.push(p1, p2, p3, p4, p5, p6);
 
-//   let savedVaues = localStorage.getItem("shoppingcart");
-//   $('.varukorg').html(localStorage.getItem("shoppingcart"))
 checkLocalStorage();
 createShoppingCart();
 createCheckOut();
 checkEmptyCart();
 
-console.log(products);
 let container = $("#products");
 
 $.each(products, (i, product) => {
@@ -86,7 +83,7 @@ function addCart(product) {
     shoppingCart.push(product);
   }
 
-  $(".varukorg").show();
+  $(".shopping-bag").show();
 
   localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
   createShoppingCart(product);
@@ -97,14 +94,16 @@ function addCart(product) {
 
 //   TOGGLE SHOW CART
 $(".shopping-btn").click(() => {
-  $(".varukorg").toggle();
+  $(".shopping-bag").toggle();
 });
 
 function createShoppingCart() {
-  let varukorg = $(".varukorg");
-  varukorg.html("");
+  let shoppingBag = $(".shopping-bag");
+  shoppingBag.html("");
   $.each(shoppingCart, (i, product) => {
-    let mainDiv = $("<div>").addClass("shopping-container").appendTo(varukorg);
+    let mainDiv = $("<div>")
+      .addClass("shopping-container")
+      .appendTo(shoppingBag);
     let imgContainer = $("<div>").addClass("img-container").appendTo(mainDiv);
     let img = $("<img>");
     img.attr("src", product.img);
@@ -141,11 +140,11 @@ function createShoppingCart() {
   });
   $("<span>")
     .html("Price: " + calcPrice() + ":-")
-    .appendTo(varukorg)
+    .appendTo(shoppingBag)
     .attr("id", "totalPrice");
   $("<button>")
     .html("PAY")
-    .appendTo(varukorg)
+    .appendTo(shoppingBag)
     .attr("id", "cart-button")
     .on("click", () => {
       if (shoppingCart.length === 0) {
@@ -165,11 +164,10 @@ function removeItem(product) {
   }
 
   if (shoppingCart.length == 0) {
-    $(".varukorg").hide();
+    $(".shopping-bag").hide();
   }
 
   product.inCart = 0;
-  console.log(product);
   calcPrice();
   calcProducts();
   localStorage.setItem("shoppingcart", JSON.stringify(shoppingCart));
@@ -195,7 +193,6 @@ function increaseProduct(product) {
 }
 function decreaseProduct(product) {
   product.inCart--;
-  console.log(product);
 
   if (product.inCart == 0) {
     removeItem(product);
@@ -275,11 +272,14 @@ function createCheckOut() {
     .attr("id", "totalPrice");
 }
 
-$("#submit-button").on("click", (event) => {
+let form = $("form");
+form.on("submit", (event) => {
   event.preventDefault();
   let checkoutContainer = $("#check-out");
   checkoutContainer.html("");
-  let confirmContainer = $('<div>').addClass('confirm-container').appendTo(checkoutContainer)
+  let confirmContainer = $("<div>")
+    .addClass("confirm-container")
+    .appendTo(checkoutContainer);
   $("<h2>").addClass("fas fa-check-circle").appendTo(confirmContainer);
   $("<h3>")
     .html("Tack för ditt köp " + $("#first-name").val())
@@ -289,7 +289,7 @@ $("#submit-button").on("click", (event) => {
     .html("Order number: " + Math.floor(Math.random() * 100000) + 1)
     .appendTo(confirmContainer)
     .addClass("confirmation");
-  $("<p>")
+  $("<button>")
     .html("Shop more")
     .appendTo(confirmContainer)
     .on("click", () => {
