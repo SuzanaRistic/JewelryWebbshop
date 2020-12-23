@@ -46,6 +46,11 @@ button {
 .shopping-btn i {
   margin-right: 10px;
 }
+
+.shopping-btn {
+  cursor: pointer;
+}
+
 header nav {
   width: 100%;
   display: none;
